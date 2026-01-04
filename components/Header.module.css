@@ -1,0 +1,41 @@
+/* src/components/Header.module.css */
+.logobox{
+    width: 20%;
+}
+
+.links{
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: opacity 0.3s ease;
+}
+
+.link:hover {
+    opacity: 0.8;
+}
+
+.mobileburgermenu {
+    display: none;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+    .links {
+        display: none;
+    }
+    
+    .mobileburgermenu {
+        display: block;
+        width: 30px;
+        height: 30px;
+        background-color: white;
+        margin-left: auto;
+    }
+}
