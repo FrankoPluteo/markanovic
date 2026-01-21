@@ -33,7 +33,7 @@ export default function AboutPage() {
         </div>
 
         <img 
-          src="/images/slika1.jpg" 
+          src="/images/slika1_f.jpg" 
           alt="O nama hero"
           style={{
             filter: "brightness(0.7)",
@@ -67,7 +67,7 @@ export default function AboutPage() {
 
         <div className={styles.onama1right}>
           <img 
-            src="/images/slika3.jpg" 
+            src="/images/slika3_f.jpg" 
             alt="Povijest"
             style={{width:"600px", borderTopLeftRadius:"15px", borderBottomLeftRadius:"15px", zIndex:"98"}}
           />
@@ -78,7 +78,7 @@ export default function AboutPage() {
 
         <div className={styles.onama1right2}>
           <img 
-            src="/images/slika3.jpg" 
+            src="/images/slika3_f.jpg" 
             alt="Ciljevi"
             style={{width:"600px", borderTopRightRadius:"15px", borderBottomRightRadius:"15px", zIndex:"98"}}
           />

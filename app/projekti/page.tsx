@@ -37,7 +37,7 @@ export default function ProjectsPage() {
         </div>
 
         <img 
-          src="/images/slika2.jpg" 
+          src="/images/slika2_f.jpg" 
           style={{
             filter: "brightness(0.5)",
             position: "absolute",
