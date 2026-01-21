@@ -1,7 +1,5 @@
 import styles from "./footer.module.css";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const year = new Date().getFullYear();
