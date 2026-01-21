@@ -4,8 +4,8 @@ date: "2025-10-05"
 location: "Split"
 excerpt: "Kratki opis projekta..."
 images:
-  - "/images/slika2.JPG"
-  - "/images/slika1.JPG"
-  - "/images/slika3.JPG"
+  - "/images/slika2.jpg"
+  - "/images/slika1.jpg"
+  - "/images/slika3.jpg"
 ---
 Markdown content...
