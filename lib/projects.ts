@@ -1,3 +1,4 @@
+// lib/projects.ts
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -9,8 +10,8 @@ export type Project = {
   title: string;
   date?: string;
   location?: string;
-  cover?: string;
   excerpt?: string;
+  images?: string[];   // ✅ new
   contentHtml?: string;
 };
 
@@ -24,8 +25,14 @@ export function getAllProjectSlugs(): string[] {
     .map((f) => f.replace(/\.md$/, ""));
 }
 
+function normalizeImages(value: unknown): string[] | undefined {
+  if (Array.isArray(value)) return value.filter(Boolean).map(String);
+  return undefined;
+}
+
 export function getAllProjects(): Project[] {
   const slugs = getAllProjectSlugs();
+
   const projects = slugs.map((slug) => {
     const fullPath = path.join(projectsDir, `${slug}.md`);
     const file = fs.readFileSync(fullPath, "utf8");
@@ -36,14 +43,12 @@ export function getAllProjects(): Project[] {
       title: (data.title as string) ?? slug,
       date: data.date as string | undefined,
       location: data.location as string | undefined,
-      cover: data.cover as string | undefined,
       excerpt: data.excerpt as string | undefined,
-      // sadržaj u listi ne treba
-      contentHtml: content,
+      images: normalizeImages((data as any).images), // ✅ new
+      contentHtml: content, // not used on list
     };
   });
 
-  // sort po datumu desc ako postoji
   projects.sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
   return projects;
 }
@@ -63,8 +68,8 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
     title: (data.title as string) ?? slug,
     date: data.date as string | undefined,
     location: data.location as string | undefined,
-    cover: data.cover as string | undefined,
     excerpt: data.excerpt as string | undefined,
+    images: normalizeImages((data as any).images), // ✅ new
     contentHtml,
   };
 }

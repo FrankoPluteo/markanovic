@@ -1,8 +1,22 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
+import { Montserrat, Oswald } from 'next/font/google';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
+
+const montserrat = Montserrat({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['300', '400', '500', '600', '700'], 
+  style: ['normal', 'italic'],
+  variable: '--font-montserrat', 
+});
+
+const oswald = Oswald({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-oswald',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -26,8 +40,30 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="hr" style={{height: "100%"}}>
-      <body style={{margin: 0, height: "100%"}}>
+    <html lang="hr" className={`${montserrat.variable} ${oswald.variable}`}>
+      <body style={{margin: 0, minHeight: "100vh", position: "relative"}}>
+        <div style={{
+          position: "fixed",
+          left: "20%",
+          top: 0,
+          height: "100%",
+          width: "1px",
+          backgroundColor: "rgba(128, 128, 128, 0.548)",
+          pointerEvents: "none",
+          zIndex: 2
+        }}></div>
+        
+        <div style={{
+          position: "fixed",
+          right: "20%",
+          top: 0,
+          height: "100%",
+          width: "1px",
+          backgroundColor: "rgba(128, 128, 128, 0.548)",
+          pointerEvents: "none",
+          zIndex: 2
+        }}></div>
+        
         <Header />
         <main style={{paddingTop: "100px", minHeight: "100vh"}}>{children}</main>
         <Footer />

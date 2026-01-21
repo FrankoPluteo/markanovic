@@ -1,41 +1,196 @@
-/* src/components/Header.module.css */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.headerScrolled {
+    background-color: #3F84E5;
+}
+
+.nav {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.548);
+    position: relative;
+    z-index: 99;
+}
+
 .logobox{
+    position: absolute;
+    left: 0;
     width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    position: relative;
+    width: 50%;
+    height: auto;
+    transform: translateY(10%);
+}
+
+.linklogo{
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .links{
+    position: absolute;
+    left: 20%;
     width: 60%;
+    height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
 .link {
+    width: 100%;
+    height: 100%;
     color: white;
     text-decoration: none;
-    font-size: 18px;
-    transition: opacity 0.3s ease;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .link:hover {
-    opacity: 0.8;
+    background-color: white;
+    color: black;
+}
+
+.linkline {
+    position: absolute;
+    width: 0;
+    height: 10%;
+    bottom: 0;
+    left: 0;
+    background-color: orange;
+    transition: all 0.3s ease;
+}
+
+.link:hover .linkline {
+    width: 100%;
 }
 
 .mobileburgermenu {
     display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 70px;
+    height: 100px;
+    margin-left: auto;
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    right: 20px;
 }
 
-/* For smaller screens */
+/* Burger Menu Icon */
+.burgerLine {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.burgerLineOpen1 {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.burgerLineOpen2 {
+    opacity: 0;
+}
+
+.burgerLineOpen3 {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Menu Overlay */
+.mobileMenuOverlay {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 100px);
+    background: linear-gradient(to right, #3F84E5, orange);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+}
+
+.mobileMenuOpen {
+    transform: translateX(0);
+}
+
+.mobileMenuLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 80%;
+}
+
+.mobileLink {
+    color: white;
+    text-decoration: none;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 1.5em;
+    padding: 15px 20px;
+    text-align: center;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.mobileLink:hover {
+    background-color: white;
+    color: #3F84E5;
+}
+
 @media (max-width: 768px) {
     .links {
         display: none;
     }
     
     .mobileburgermenu {
-        display: block;
-        width: 30px;
-        height: 30px;
-        background-color: white;
-        margin-left: auto;
+        display: flex;
+    }
+
+    .logobox {
+        width: auto;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .logo {
+        width: 120px;
     }
 }

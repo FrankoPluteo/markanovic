@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
-import { getAllProjectSlugs, getProjectBySlug } from "@/lib/projects";
+import { getProjectBySlug } from "@/lib/projects";
 import { notFound } from "next/navigation";
+import ProjectGallery from "@/components/ProjectGallery";
+import styles from "./slug.module.css";
 
-export async function generateStaticParams() {
-  return getAllProjectSlugs().map((slug) => ({ slug }));
-}
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
 
-export async function generateMetadata(
-  { params }: { params: { slug: string } }
-): Promise<Metadata> {
-  const project = await getProjectBySlug(params.slug);
+export const revalidate = 3600;
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
+
   if (!project) return { title: "Projekt" };
+
+  const og = project.images?.[0];
 
   return {
     title: project.title,
@@ -18,24 +24,65 @@ export async function generateMetadata(
     openGraph: {
       title: project.title,
       description: project.excerpt,
-      images: project.cover ? [{ url: project.cover }] : undefined,
+      images: og ? [{ url: og }] : undefined,
     },
   };
 }
 
-export default async function ProjectDetailPage({ params }: { params: { slug: string } }) {
-  const project = await getProjectBySlug(params.slug);
+export default async function ProjectDetailPage({ params }: PageProps) {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
+
   if (!project) notFound();
 
   return (
     <>
-      <h1>{project.title}</h1>
-      <div style={{ opacity: 0.8, marginBottom: 16 }}>
-        {project.location ? <span>{project.location}</span> : null}
-        {project.date ? <span>{project.location ? " • " : ""}{project.date}</span> : null}
+    <div className={styles.slugbox}>
+      
+      <div className={styles.projectinfo}>
+        <h1 style={{ 
+          color:"#3F84E5", 
+          fontFamily: "var(--font-oswald)", 
+          textTransform: "uppercase", 
+          letterSpacing: "0.03em",
+          fontSize: "clamp(1.8em, 5vw, 2.5em)",
+          textAlign: "center",
+          wordBreak: "break-word",
+          hyphens: "auto"
+        }}>
+          {project.title}
+        </h1>
+
+        <div style={{ 
+          opacity: 0.75, 
+          marginTop: 6, 
+          marginBottom: 18, 
+          fontSize: "clamp(12px, 2.5vw, 14px)",
+          textAlign: "center",
+          padding: "0 10px"
+        }}>
+          {project.location ? <span>{project.location}</span> : null}
+          {project.date ? <span>{project.location ? " • " : ""}{project.date}</span> : null}
+        </div>
+
+        <article 
+          dangerouslySetInnerHTML={{ __html: project.contentHtml ?? "" }} 
+          style={{
+            width: "100%",
+            maxWidth: "100%",
+            overflowWrap: "break-word",
+            wordWrap: "break-word"
+          }}
+        />
+
       </div>
 
-      <article dangerouslySetInnerHTML={{ __html: project.contentHtml ?? "" }} />
+        {project.images?.length ? (
+          <ProjectGallery images={project.images} title={project.title} />
+        ) : null}
+
+
+      </div>
     </>
   );
 }

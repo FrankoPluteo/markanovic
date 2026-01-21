@@ -5,10 +5,18 @@
   box-sizing: border-box;
 }
 
-html, body {
+html {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+  overflow-y: auto; /* Allow vertical scrolling */
+}
+
+body {
+  width: 100%;
+  min-height: 100%; /* Changed from height to min-height */
+  overflow-x: hidden;
+  overflow-y: auto; /* Allow vertical scrolling */
 }
 
 /* Vertical lines for all pages */
@@ -20,7 +28,7 @@ body::after {
   height: 100%;
   width: 1px;
   background-color: rgba(128, 128, 128, 0.548);
-  z-index: 99; /* Just below the header */
+  z-index: 2; /* Just below the header */
   pointer-events: none; /* So they don't interfere with clicks */
 }
 
@@ -30,4 +38,13 @@ body::before {
 
 body::after {
   right: 20%;
+}
+
+body {
+  font-family: var(--font-montserrat), system-ui, -apple-system, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-oswald), system-ui, -apple-system, sans-serif;
+  letter-spacing: 0.02em;
 }

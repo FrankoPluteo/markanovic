@@ -1,0 +1,154 @@
+.gallery {
+  margin: 18px 0 26px;
+  width: 50%;
+}
+
+.frame {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f3f3f3;
+  aspect-ratio: 16 / 9;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.45);
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease;
+  z-index: 10;
+}
+
+.prev { left: 12px; }
+.next { right: 12px; }
+
+.prev:hover,
+.next:hover {
+  background: rgba(0,0,0,0.6);
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  padding: 0 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dotActive {
+  background: rgba(0,0,0,0.75);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .gallery {
+    width: 100%;
+    margin: 20px 0 30px;
+  }
+
+  .frame {
+    border-radius: 12px;
+  }
+
+  .prev,
+  .next {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+
+  .prev { left: 10px; }
+  .next { right: 10px; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .gallery {
+    width: 100%;
+    margin: 15px 0 25px;
+  }
+
+  .frame {
+    border-radius: 10px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .prev,
+  .next {
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
+    background: rgba(0,0,0,0.55);
+  }
+
+  .prev { left: 8px; }
+  .next { right: 8px; }
+
+  .prev:active,
+  .next:active {
+    background: rgba(0,0,0,0.7);
+  }
+
+  .dots {
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .gallery {
+    margin: 10px 0 20px;
+  }
+
+  .frame {
+    border-radius: 8px;
+  }
+
+  .prev,
+  .next {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+
+  .prev { left: 6px; }
+  .next { right: 6px; }
+
+  .dots {
+    gap: 5px;
+    margin-top: 8px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+}
