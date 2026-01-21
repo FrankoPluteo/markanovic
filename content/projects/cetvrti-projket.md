@@ -5,7 +5,7 @@ location: "Zagreb"
 excerpt: "Kratki opis projekta..."
 images:
   - "/images/slika1.JPG"
-  - "/images/slika2.jpg"
-  - "/images/slika1.jpg"
+  - "/images/slika2.JPG"
+  - "/images/slika1.JPG"
 ---
 Markdown content...
