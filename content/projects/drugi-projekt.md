@@ -6,6 +6,6 @@ excerpt: "Kratki opis projekta..."
 images:
   - "/images/slika2.jpg"
   - "/images/slika1.jpg"
-  - "/images/slika3.jpg"
+  - "/images/slika3.JPG"
 ---
 Markdown content...

@@ -6,7 +6,7 @@ excerpt: "Kratki opis projekta..."
 images:
   - "/images/slika1.jpg"
   - "/images/slika2.jpg"
-  - "/images/slika3.jpg"
+  - "/images/slika3.JPG"
 ---
 Nakon uspješnog dobivanja građevinske dozvole i svih potrebnih suglasnosti, gradska četvrt Sračinec konačno dobiva svoj dugoočekivani centar zajednice. Projekt "Zelena oaza", vrijedan 2,3 milijuna eura, u potpunosti se financira iz EU fondova i proračuna Grada Varaždina.
 
